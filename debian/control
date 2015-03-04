@@ -1,0 +1,23 @@
+Source: janitza-mibs
+Section: net
+Priority: optional
+Maintainer: Carsten Schoenert <c.schoenert@t-online.de>
+Build-Depends: debhelper (>= 9.0.0)
+Standards-Version: 3.9.6
+Homepage: http://www.janitza.de/snmpmib.html
+
+Package: janitza-mibs
+Architecture: all
+Depends: ${misc:Depends},
+  snmp,
+  snmp-mibs-downloader
+Description: Management Information Base files (MIBs) for Janitza measurement devices
+ Some devices from Janitza are readonly accessible via the SNMP protocol.
+ There are devices with a ethernet port such
+  * UMG96RM
+  * UMG508
+  * UMG511
+  * UMG604
+  * UMG605
+ .
+ This package contains the MIBs for the above listed devices.

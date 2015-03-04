@@ -1,0 +1,1275 @@
+From: Carsten Schoenert <c.schoenert@t-online.de>
+Date: Wed, 4 Mar 2015 21:38:58 +0100
+Subject: fixing up UMG511.mib
+
+---
+ UMG511.mib | 1042 [32m++++++++++++++++++++++++++++++[m[31m------------------------------[m
+ 1 file changed, 520 insertions(+), 522 deletions(-)
+
+[1mdiff --git a/UMG511.mib b/UMG511.mib[m
+[1mindex 1ec3e88..bc50ebc 100644[m
+[1m--- a/UMG511.mib[m
+[1m+++ b/UMG511.mib[m
+[36m@@ -1,24 +1,22 @@[m
+[32m+[m[32mJANITZA-MIB DEFINITIONS ::= BEGIN[m[41m[m
+[32m+[m[32m    IMPORTS[m[41m[m
+[32m+[m[32m        sysUpTime, DisplayString[m[41m[m
+[32m+[m[32m            FROM RFC1213-MIB[m[41m[m
+[32m+[m[32m        OBJECT-TYPE[m[41m[m
+[32m+[m[32m            FROM RFC-1212[m[41m[m
+[32m+[m[32m        mib-2[m[41m[m
+[32m+[m[32m            FROM SNMPv2-SMI[m[41m[m
+[32m+[m[32m        enterprises, TimeTicks[m[41m[m
+[32m+[m[32m            FROM RFC1155-SMI;[m[41m[m
+ [m
+ [m
+[31m-	JANITZA-MIB DEFINITIONS ::= BEGIN[m
+[31m-		IMPORTS[m
+[31m-                  sysUpTime, DisplayString        [m
+[31m-				FROM RFC1213-MIB[m
+[31m-			OBJECT-TYPE[m
+[31m-				FROM RFC-1212[m
+[31m-			mib-2[m
+[31m-		        	FROM SNMPv2-SMI[m
+[31m-			enterprises, TimeTicks[m
+[31m-				FROM RFC1155-SMI;[m
+ [m
+ [m
+[31m-[m
+[31m-[m
+[31m-system   	OBJECT IDENTIFIER ::= { mib-2 1 }[m
+[32m+[m[32msystem      OBJECT IDENTIFIER ::= { mib-2 1 }[m[41m[m
+ snmp         OBJECT IDENTIFIER ::= { mib-2 11 }[m
+ [m
+ sysDescr OBJECT-TYPE[m
+[31m-	SYNTAX OCTET STRING[m
+[32m+[m[32m    SYNTAX OCTET STRING[m[41m[m
+     MAX-ACCESS  read-only[m
+     STATUS      current[m
+     DESCRIPTION[m
+[36m@@ -67,7 +65,7 @@[m [msysName OBJECT-TYPE[m
+     ::= { system 5 }[m
+ [m
+ sysLocation OBJECT-TYPE[m
+[31m-	SYNTAX OCTET STRING[m
+[32m+[m[32m    SYNTAX OCTET STRING[m[41m[m
+     MAX-ACCESS  read-write[m
+     STATUS      current[m
+     DESCRIPTION[m
+[36m@@ -107,607 +105,607 @@[m [msysServices OBJECT-TYPE[m
+ [m
+ [m
+ [m
+[31m-	janitza OBJECT IDENTIFIER ::= { enterprises 34278}[m
+[32m+[m[32m    janitza OBJECT IDENTIFIER ::= { enterprises 34278}[m[41m[m
+ [m
+[31m-	rmsPhase OBJECT IDENTIFIER ::= { janitza 1 }[m
+[32m+[m[32m    rmsPhase OBJECT IDENTIFIER ::= { janitza 1 }[m[41m[m
+ [m
+[31m-	uLN1 OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    uLN1 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Voltage Phase L1 in 100mV"[m
+[31m-		::= { rmsPhase 1 }[m
+[32m+[m[32m        "Voltage Phase L1 in 100mV"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 1 }[m[41m[m
+ [m
+[31m-	uLN2 OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    uLN2 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Voltage Phase L2 in 100mV"[m
+[31m-		::= { rmsPhase 2 }[m
+[32m+[m[32m        "Voltage Phase L2 in 100mV"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 2 }[m[41m[m
+ [m
+[31m-	uLN3 OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    uLN3 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Voltage Phase L3 in 100mV"[m
+[31m-		::= { rmsPhase 3 }[m
+[32m+[m[32m        "Voltage Phase L3 in 100mV"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 3 }[m[41m[m
+ [m
+[31m-	uLN4 OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    uLN4 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Voltage Pahse L4 in 100mV"[m
+[31m-		::= { rmsPhase 4 }[m
+[32m+[m[32m        "Voltage Pahse L4 in 100mV"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 4 }[m[41m[m
+ [m
+[31m-	uL1L2 OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    uL1L2 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Voltage Phase L1-L2 in 100mV"[m
+[31m-		::= { rmsPhase 5 }[m
+[32m+[m[32m        "Voltage Phase L1-L2 in 100mV"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 5 }[m[41m[m
+ [m
+[31m-	uL2L3 OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    uL2L3 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Voltage Phase L2-L3 in 100mV"[m
+[31m-		::= {  rmsPhase 6 }[m
+[32m+[m[32m        "Voltage Phase L2-L3 in 100mV"[m[41m[m
+[32m+[m[32m        ::= {  rmsPhase 6 }[m[41m[m
+ [m
+[31m-	uL3L1 OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    uL3L1 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Voltage Phase L3-L1 in 100mV"[m
+[31m-		::= { rmsPhase 7 }[m
+[32m+[m[32m        "Voltage Phase L3-L1 in 100mV"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 7 }[m[41m[m
+ [m
+[31m-	iL1	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    iL1 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Current Phase L1  in 1mA"[m
+[31m-		::= { rmsPhase 8 }[m
+[32m+[m[32m        "Current Phase L1  in 1mA"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 8 }[m[41m[m
+ [m
+[31m-	iL2	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    iL2 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Current Phase L2  in 1mA"[m
+[31m-		::= { rmsPhase 9 }[m
+[32m+[m[32m        "Current Phase L2  in 1mA"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 9 }[m[41m[m
+ [m
+[31m-	iL3	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    iL3 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Current Phase L3  in 1mA"[m
+[31m-		::= { rmsPhase 10 }[m
+[32m+[m[32m        "Current Phase L3  in 1mA"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 10 }[m[41m[m
+ [m
+[31m-	iL4	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    iL4 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Current Phase L4  in 1mA"[m
+[31m-		::= { rmsPhase 11 }[m
+[32m+[m[32m        "Current Phase L4  in 1mA"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 11 }[m[41m[m
+ [m
+[31m-	pL1	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    pL1 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Real Power L1  in Watt"[m
+[31m-		::= { rmsPhase 12 }[m
+[32m+[m[32m        "Real Power L1  in Watt"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 12 }[m[41m[m
+ [m
+[31m-	pL2	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    pL2 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Real Power L2  in Watt"[m
+[31m-		::= { rmsPhase 13 }[m
+[32m+[m[32m        "Real Power L2  in Watt"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 13 }[m[41m[m
+ [m
+[31m-	pL3	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    pL3 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Real Power L3  in Watt"[m
+[31m-		::= { rmsPhase 14 }[m
+[32m+[m[32m        "Real Power L3  in Watt"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 14 }[m[41m[m
+ [m
+[31m-	pL4	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    pL4 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Real Power L4  in Watt"[m
+[31m-		::= { rmsPhase 15 }[m
+[32m+[m[32m        "Real Power L4  in Watt"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 15 }[m[41m[m
+ [m
+[31m-	qL1	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    qL1 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Reaktiv Power L1  in VAr"[m
+[31m-		::= { rmsPhase 16 }[m
+[32m+[m[32m        "Reaktiv Power L1  in VAr"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 16 }[m[41m[m
+ [m
+[31m-	qL2	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    qL2 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Reaktiv Power L2  in VAr"[m
+[31m-		::= { rmsPhase 17 }[m
+[32m+[m[32m        "Reaktiv Power L2  in VAr"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 17 }[m[41m[m
+ [m
+[31m-	qL3	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    qL3 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Reaktiv Power L3  in VAr"[m
+[31m-		::= { rmsPhase 18 }[m
+[32m+[m[32m        "Reaktiv Power L3  in VAr"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 18 }[m[41m[m
+ [m
+[31m-	qL4	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    qL4 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Reaktiv Power L4  in VAr"[m
+[31m-		::= { rmsPhase 19 }[m
+[32m+[m[32m        "Reaktiv Power L4  in VAr"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 19 }[m[41m[m
+ [m
+[31m-	sL1	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    sL1 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Power L1  in VA"[m
+[31m-		::= { rmsPhase 20 }[m
+[32m+[m[32m        "Power L1  in VA"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 20 }[m[41m[m
+ [m
+[31m-	sL2	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    sL2 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Power L2  in VA"[m
+[31m-		::= { rmsPhase 21 }[m
+[32m+[m[32m        "Power L2  in VA"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 21 }[m[41m[m
+ [m
+[31m-	sL3	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    sL3 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Power L3  in VA"[m
+[31m-		::= { rmsPhase 22 }[m
+[32m+[m[32m        "Power L3  in VA"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 22 }[m[41m[m
+ [m
+[31m-	sL4	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    sL4 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Power L4  in VA"[m
+[31m-		::= { rmsPhase 23 }[m
+[32m+[m[32m        "Power L4  in VA"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 23 }[m[41m[m
+ [m
+[31m-	cosPL1	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    cosPL1  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Cos(Phi) L1 * 0.001"[m
+[31m-		::= { rmsPhase 24 }[m
+[32m+[m[32m        "Cos(Phi) L1 * 0.001"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 24 }[m[41m[m
+ [m
+[31m-	cosPL2	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    cosPL2  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Cos(Phi) L2 * 0.001"[m
+[31m-		::= { rmsPhase 25 }[m
+[32m+[m[32m        "Cos(Phi) L2 * 0.001"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 25 }[m[41m[m
+ [m
+[31m-	cosPL3	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    cosPL3  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Cos(Phi) L3 * 0.001"[m
+[31m-		::= { rmsPhase 26 }[m
+[32m+[m[32m        "Cos(Phi) L3 * 0.001"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 26 }[m[41m[m
+ [m
+[31m-	cosPL4	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    cosPL4  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Cos(Phi) L4 * 0.001"[m
+[31m-		::= { rmsPhase 27 }[m
+[32m+[m[32m        "Cos(Phi) L4 * 0.001"[m[41m[m
+[32m+[m[32m        ::= { rmsPhase 27 }[m[41m[m
+ [m
+ [m
+[31m-	rmsSumme3 OBJECT IDENTIFIER ::= { janitza 2 }[m
+[32m+[m[32m    rmsSumme3 OBJECT IDENTIFIER ::= { janitza 2 }[m[41m[m
+ [m
+[31m-	p3     OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    p3     OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Real Power Summe L1..L3  in Watt"[m
+[31m-		::= { rmsSumme3 1}[m
+[32m+[m[32m        "Real Power Summe L1..L3  in Watt"[m[41m[m
+[32m+[m[32m        ::= { rmsSumme3 1}[m[41m[m
+ [m
+[31m-	q3	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    q3  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Reaktiv Power Summe L1..L3  in Watt"[m
+[31m-		::= { rmsSumme3 2}[m
+[32m+[m[32m        "Reaktiv Power Summe L1..L3  in Watt"[m[41m[m
+[32m+[m[32m        ::= { rmsSumme3 2}[m[41m[m
+ [m
+[31m-	s3	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    s3  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Power Summe L1..L3  in Watt"[m
+[31m-		::= { rmsSumme3 3}[m
+[32m+[m[32m        "Power Summe L1..L3  in Watt"[m[41m[m
+[32m+[m[32m        ::= { rmsSumme3 3}[m[41m[m
+ [m
+[31m-	cosP3	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    cosP3   OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"COS(Phi) Summe L1..L3  *0.001"[m
+[31m-		::= { rmsSumme3 4}[m
+[32m+[m[32m        "COS(Phi) Summe L1..L3  *0.001"[m[41m[m
+[32m+[m[32m        ::= { rmsSumme3 4}[m[41m[m
+ [m
+ [m
+[31m-	rmsSumme4 OBJECT IDENTIFIER ::= { janitza 3 }[m
+[32m+[m[32m    rmsSumme4 OBJECT IDENTIFIER ::= { janitza 3 }[m[41m[m
+ [m
+[31m-	p4    OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    p4    OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Real Power Summe L1..L4  in Watt"[m
+[31m-		::= { rmsSumme4 1}[m
+[32m+[m[32m        "Real Power Summe L1..L4  in Watt"[m[41m[m
+[32m+[m[32m        ::= { rmsSumme4 1}[m[41m[m
+ [m
+[31m-	q4	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    q4  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Reaktiv Power Summe L1..L4  in Watt"[m
+[31m-		::= { rmsSumme4 2}[m
+[32m+[m[32m        "Reaktiv Power Summe L1..L4  in Watt"[m[41m[m
+[32m+[m[32m        ::= { rmsSumme4 2}[m[41m[m
+ [m
+[31m-	s4	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    s4  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Power Summe L1..L4  in Watt"[m
+[31m-		::= { rmsSumme4 3}[m
+[32m+[m[32m        "Power Summe L1..L4  in Watt"[m[41m[m
+[32m+[m[32m        ::= { rmsSumme4 3}[m[41m[m
+ [m
+[31m-	cosP4	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    cosP4   OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"COS(Phi) Summe L1..L4  *0.001"[m
+[31m-		::= { rmsSumme4 4}[m
+[32m+[m[32m        "COS(Phi) Summe L1..L4  *0.001"[m[41m[m
+[32m+[m[32m        ::= { rmsSumme4 4}[m[41m[m
+ [m
+ [m
+ [m
+[31m-	energiePhase OBJECT IDENTIFIER ::= { janitza 4 }[m
+[32m+[m[32m    energiePhase OBJECT IDENTIFIER ::= { janitza 4 }[m[41m[m
+ [m
+[31m-	whL1     OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    whL1     OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Active Energie  Phase L1 in 0.1 KWh"[m
+[31m-		::= { energiePhase  1}[m
+[32m+[m[32m        "Active Energie  Phase L1 in 0.1 KWh"[m[41m[m
+[32m+[m[32m        ::= { energiePhase  1}[m[41m[m
+ [m
+[31m-	whL2     OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    whL2     OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Active Energie  Phase L2 in 0.1 KWh"[m
+[31m-		::= { energiePhase  2}[m
+[32m+[m[32m        "Active Energie  Phase L2 in 0.1 KWh"[m[41m[m
+[32m+[m[32m        ::= { energiePhase  2}[m[41m[m
+ [m
+[31m-	whL3     OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    whL3     OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Active Energie  Phase L3 in 0.1 KWh"[m
+[31m-		::= { energiePhase  3}[m
+[32m+[m[32m        "Active Energie  Phase L3 in 0.1 KWh"[m[41m[m
+[32m+[m[32m        ::= { energiePhase  3}[m[41m[m
+ [m
+[31m-	whL4     OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    whL4     OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Active Energie  Phase L4 in 0.1 KWh"[m
+[31m-		::= { energiePhase  4}[m
+[32m+[m[32m        "Active Energie  Phase L4 in 0.1 KWh"[m[41m[m
+[32m+[m[32m        ::= { energiePhase  4}[m[41m[m
+ [m
+ [m
+[31m-	qhL1     OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    qhL1     OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Reaktive Energie  Phase L1 in 0.1 KVArh"[m
+[31m-		::= { energiePhase  5}[m
+[32m+[m[32m        "Reaktive Energie  Phase L1 in 0.1 KVArh"[m[41m[m
+[32m+[m[32m        ::= { energiePhase  5}[m[41m[m
+ [m
+[31m-	qhL2     OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    qhL2     OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Reaktive Energie  Phase L2 in 0.1 KVArh"[m
+[31m-		::= { energiePhase  6}[m
+[32m+[m[32m        "Reaktive Energie  Phase L2 in 0.1 KVArh"[m[41m[m
+[32m+[m[32m        ::= { energiePhase  6}[m[41m[m
+ [m
+[31m-	qhL3     OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    qhL3     OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Reaktive Energie  Phase L3 in 0.1 KVArh"[m
+[31m-		::= { energiePhase  7}[m
+[32m+[m[32m        "Reaktive Energie  Phase L3 in 0.1 KVArh"[m[41m[m
+[32m+[m[32m        ::= { energiePhase  7}[m[41m[m
+ [m
+[31m-	qhL4     OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    qhL4     OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Reaktive Energie  Phase L4 in 0.1 KVArh"[m
+[31m-		::= { energiePhase  8}[m
+[32m+[m[32m        "Reaktive Energie  Phase L4 in 0.1 KVArh"[m[41m[m
+[32m+[m[32m        ::= { energiePhase  8}[m[41m[m
+ [m
+ [m
+[31m-	energieSumme3 OBJECT IDENTIFIER ::= { janitza 5 }[m
+[32m+[m[32m    energieSumme3 OBJECT IDENTIFIER ::= { janitza 5 }[m[41m[m
+ [m
+[31m-	wh3    OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    wh3    OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Active Energie  Summe L1..L3 in 0.1 KWh"[m
+[31m-		::= { energieSumme3 1}[m
+[32m+[m[32m        "Active Energie  Summe L1..L3 in 0.1 KWh"[m[41m[m
+[32m+[m[32m        ::= { energieSumme3 1}[m[41m[m
+ [m
+[31m-	qh3    OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    qh3    OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Reaktive Energie  Summe L1..L3 in 0.1 KWh"[m
+[31m-		::= { energieSumme3  2}[m
+[32m+[m[32m        "Reaktive Energie  Summe L1..L3 in 0.1 KWh"[m[41m[m
+[32m+[m[32m        ::= { energieSumme3  2}[m[41m[m
+ [m
+[31m-	energieSumme4 OBJECT IDENTIFIER ::= { janitza 6 }[m
+[32m+[m[32m    energieSumme4 OBJECT IDENTIFIER ::= { janitza 6 }[m[41m[m
+ [m
+[31m-	wh4    OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    wh4    OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Active Energie  Summe L1..L4 in 0.1 KWh"[m
+[31m-		::= { energieSumme4  1}[m
+[32m+[m[32m        "Active Energie  Summe L1..L4 in 0.1 KWh"[m[41m[m
+[32m+[m[32m        ::= { energieSumme4  1}[m[41m[m
+ [m
+[31m-	qh4    OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    qh4    OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Reaktive Energie  Summe L1..L4 in 0.1 KWh"[m
+[31m-		::= { energieSumme4  2}[m
+[32m+[m[32m        "Reaktive Energie  Summe L1..L4 in 0.1 KWh"[m[41m[m
+[32m+[m[32m        ::= { energieSumme4  2}[m[41m[m
+ [m
+[31m-	thd OBJECT IDENTIFIER ::= { janitza 7 }[m
+[32m+[m[32m    thd OBJECT IDENTIFIER ::= { janitza 7 }[m[41m[m
+ [m
+[31m-	thdULN1	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    thdULN1 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Total Harmonic Distortion Voltage Phase L1 * 0.1%"[m
+[31m-		::= { thd 1 }[m
+[32m+[m[32m        "Total Harmonic Distortion Voltage Phase L1 * 0.1%"[m[41m[m
+[32m+[m[32m        ::= { thd 1 }[m[41m[m
+ [m
+[31m-	thdULN2	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    thdULN2 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Total Harmonic Distortion Voltage Phase L2 * 0.1%"[m
+[31m-		::= { thd 2 }[m
+[32m+[m[32m        "Total Harmonic Distortion Voltage Phase L2 * 0.1%"[m[41m[m
+[32m+[m[32m        ::= { thd 2 }[m[41m[m
+ [m
+[31m-	thdULN3	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    thdULN3 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Total Harmonic Distortion Voltage Phase L3 * 0.1%"[m
+[31m-		::= { thd 3 }[m
+[32m+[m[32m        "Total Harmonic Distortion Voltage Phase L3 * 0.1%"[m[41m[m
+[32m+[m[32m        ::= { thd 3 }[m[41m[m
+ [m
+[31m-	thdULN4	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    thdULN4 OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Total Harmonic Distortion Voltage Phase L4 * 0.1%"[m
+[31m-		::= { thd 4 }[m
+[32m+[m[32m        "Total Harmonic Distortion Voltage Phase L4 * 0.1%"[m[41m[m
+[32m+[m[32m        ::= { thd 4 }[m[41m[m
+ [m
+[31m-	thdIL1	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    thdIL1  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Total Harmonic Distortion Current Phase L1 * 0.1%"[m
+[31m-		::= { thd 5 }[m
+[32m+[m[32m        "Total Harmonic Distortion Current Phase L1 * 0.1%"[m[41m[m
+[32m+[m[32m        ::= { thd 5 }[m[41m[m
+ [m
+[31m-	thdIL2	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    thdIL2  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Total Harmonic Distortion Current Phase L2 * 0.1%"[m
+[31m-		::= { thd 6 }[m
+[32m+[m[32m        "Total Harmonic Distortion Current Phase L2 * 0.1%"[m[41m[m
+[32m+[m[32m        ::= { thd 6 }[m[41m[m
+ [m
+[31m-	thdIL3	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    thdIL3  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Total Harmonic Distortion Current Phase L3 * 0.1%"[m
+[31m-		::= { thd 7 }[m
+[32m+[m[32m        "Total Harmonic Distortion Current Phase L3 * 0.1%"[m[41m[m
+[32m+[m[32m        ::= { thd 7 }[m[41m[m
+ [m
+[31m-	thdIL4	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    thdIL4  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Total Harmonic Distortion Current Phase L4 * 0.1%"[m
+[31m-		::= { thd 8 }[m
+[32m+[m[32m        "Total Harmonic Distortion Current Phase L4 * 0.1%"[m[41m[m
+[32m+[m[32m        ::= { thd 8 }[m[41m[m
+ [m
+[31m-	misc OBJECT IDENTIFIER ::= { janitza 8 }[m
+[32m+[m[32m    misc OBJECT IDENTIFIER ::= { janitza 8 }[m[41m[m
+ [m
+[31m-	frequenz	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    frequenz    OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Frequenz* 0.01 Hz"[m
+[31m-		::= { misc 1 }[m
+[32m+[m[32m        "Frequenz* 0.01 Hz"[m[41m[m
+[32m+[m[32m        ::= { misc 1 }[m[41m[m
+ [m
+[31m-	user OBJECT IDENTIFIER ::= { janitza 9 }[m
+[32m+[m[32m    user OBJECT IDENTIFIER ::= { janitza 9 }[m[41m[m
+ [m
+[31m-	jasicVAR1	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR1   OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[0]"[m
+[31m-		::= { user 1 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[0]"[m[41m[m
+[32m+[m[32m        ::= { user 1 }[m[41m[m
+ [m
+[31m-	jasicVAR2	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR2   OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[1]"[m
+[31m-		::= { user 2 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[1]"[m[41m[m
+[32m+[m[32m        ::= { user 2 }[m[41m[m
+ [m
+[31m-	jasicVAR3	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR3   OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[2]"[m
+[31m-		::= { user 3 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[2]"[m[41m[m
+[32m+[m[32m        ::= { user 3 }[m[41m[m
+ [m
+[31m-	jasicVAR4	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR4   OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[3]"[m
+[31m-		::= { user 4 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[3]"[m[41m[m
+[32m+[m[32m        ::= { user 4 }[m[41m[m
+ [m
+[31m-	jasicVAR5	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR5   OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[4]"[m
+[31m-		::= { user 5 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[4]"[m[41m[m
+[32m+[m[32m        ::= { user 5 }[m[41m[m
+ [m
+[31m-	jasicVAR6	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR6   OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[5]"[m
+[31m-		::= { user 6 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[5]"[m[41m[m
+[32m+[m[32m        ::= { user 6 }[m[41m[m
+ [m
+[31m-	jasicVAR7	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR7   OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[6]"[m
+[31m-		::= { user 7 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[6]"[m[41m[m
+[32m+[m[32m        ::= { user 7 }[m[41m[m
+ [m
+[31m-	jasicVAR8	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR8   OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[7]"[m
+[31m-		::= { user 8 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[7]"[m[41m[m
+[32m+[m[32m        ::= { user 8 }[m[41m[m
+ [m
+[31m-	jasicVAR9	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR9   OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[8]"[m
+[31m-		::= { user 9 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[8]"[m[41m[m
+[32m+[m[32m        ::= { user 9 }[m[41m[m
+ [m
+[31m-	jasicVAR10	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR10  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[9]"[m
+[31m-		::= { user 10 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[9]"[m[41m[m
+[32m+[m[32m        ::= { user 10 }[m[41m[m
+ [m
+[31m-	jasicVAR11	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR11  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[10]"[m
+[31m-		::= { user 11 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[10]"[m[41m[m
+[32m+[m[32m        ::= { user 11 }[m[41m[m
+ [m
+[31m-	jasicVAR12	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR12  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[11]"[m
+[31m-		::= { user 12 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[11]"[m[41m[m
+[32m+[m[32m        ::= { user 12 }[m[41m[m
+ [m
+[31m-	jasicVAR13	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR13  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[12]"[m
+[31m-		::= { user 13 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[12]"[m[41m[m
+[32m+[m[32m        ::= { user 13 }[m[41m[m
+ [m
+[31m-	jasicVAR14	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR14  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[13]"[m
+[31m-		::= { user 14 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[13]"[m[41m[m
+[32m+[m[32m        ::= { user 14 }[m[41m[m
+ [m
+[31m-	jasicVAR15	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR15  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[14]"[m
+[31m-		::= { user 15 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[14]"[m[41m[m
+[32m+[m[32m        ::= { user 15 }[m[41m[m
+ [m
+[31m-	jasicVAR16	OBJECT-TYPE[m
+[31m-		SYNTAX INTEGER[m
+[31m-		ACCESS read-write[m
+[31m-		STATUS mandatory[m
+[32m+[m[32m    jasicVAR16  OBJECT-TYPE[m[41m[m
+[32m+[m[32m        SYNTAX INTEGER[m[41m[m
+[32m+[m[32m        ACCESS read-write[m[41m[m
+[32m+[m[32m        STATUS mandatory[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic User Variable  to user for Jasic :_snmp_uservar[15]"[m
+[31m-		::= { user 16 }[m
+[32m+[m[32m        "Jasic User Variable  to user for Jasic :_snmp_uservar[15]"[m[41m[m
+[32m+[m[32m        ::= { user 16 }[m[41m[m
+ [m
+ [m
+ [m
+[36m@@ -731,100 +729,100 @@[m [msysServices OBJECT-TYPE[m
+ [m
+ [m
+ [m
+[31m-	userTrap1 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap1 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 6"[m
+[31m-		::=  6[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 6"[m[41m[m
+[32m+[m[32m        ::=  6[m[41m[m
+ [m
+[31m-	userTrap2 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap2 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 7"[m
+[31m-		::=  7[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 7"[m[41m[m
+[32m+[m[32m        ::=  7[m[41m[m
+ [m
+[31m-	userTrap3 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap3 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 8"[m
+[31m-		::=  8[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 8"[m[41m[m
+[32m+[m[32m        ::=  8[m[41m[m
+ [m
+[31m-	userTrap4 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap4 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 9"[m
+[31m-		::=  9[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 9"[m[41m[m
+[32m+[m[32m        ::=  9[m[41m[m
+ [m
+[31m-	userTrap5 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap5 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 10"[m
+[31m-		::=  10[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 10"[m[41m[m
+[32m+[m[32m        ::=  10[m[41m[m
+ [m
+[31m-	userTrap6 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap6 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 11"[m
+[31m-		::=  11[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 11"[m[41m[m
+[32m+[m[32m        ::=  11[m[41m[m
+ [m
+[31m-	userTrap7 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap7 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 12"[m
+[31m-		::=  12[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 12"[m[41m[m
+[32m+[m[32m        ::=  12[m[41m[m
+ [m
+[31m-	userTrap8 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap8 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 13"[m
+[31m-		::=  13[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 13"[m[41m[m
+[32m+[m[32m        ::=  13[m[41m[m
+ [m
+[31m-	userTrap9 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap9 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 14"[m
+[31m-		::=  14[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 14"[m[41m[m
+[32m+[m[32m        ::=  14[m[41m[m
+ [m
+[31m-	userTrap10 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap10 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 15"[m
+[31m-		::=  15[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 15"[m[41m[m
+[32m+[m[32m        ::=  15[m[41m[m
+ [m
+[31m-	userTrap11 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap11 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 16"[m
+[31m-		::=  16[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 16"[m[41m[m
+[32m+[m[32m        ::=  16[m[41m[m
+ [m
+[31m-	userTrap12 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap12 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 17"[m
+[31m-		::=  17[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 17"[m[41m[m
+[32m+[m[32m        ::=  17[m[41m[m
+ [m
+[31m-	userTrap13 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap13 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 18"[m
+[31m-		::=  18[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 18"[m[41m[m
+[32m+[m[32m        ::=  18[m[41m[m
+ [m
+[31m-	userTrap14 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap14 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 19"[m
+[31m-		::=  19[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 19"[m[41m[m
+[32m+[m[32m        ::=  19[m[41m[m
+ [m
+[31m-	userTrap15 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap15 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 20"[m
+[31m-		::=  20[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 20"[m[41m[m
+[32m+[m[32m        ::=  20[m[41m[m
+ [m
+[31m-	userTrap16 TRAP-TYPE[m
+[31m-		ENTERPRISE janitza [m
+[32m+[m[32m    userTrap16 TRAP-TYPE[m[41m[m
+[32m+[m[32m        ENTERPRISE janitza[m[41m[m
+     DESCRIPTION[m
+[31m-		"Jasic Trap  : use type=6 , subtype = 21"[m
+[31m-		::=  21[m
+[32m+[m[32m        "Jasic Trap  : use type=6 , subtype = 21"[m[41m[m
+[32m+[m[32m        ::=  21[m[41m[m
+ [m
+[31m-	END		[m
+\ No newline at end of file[m
+[32m+[m[32m    END[m[41m [m
