@@ -16,7 +16,9 @@ Description: Management Information Base files (MIBs) for Janitza measurement de
  There are devices with a ethernet port such
   * UMG96RM
   * UMG508
+  * UMG509
   * UMG511
+  * UMG512
   * UMG604
   * UMG605
  .
