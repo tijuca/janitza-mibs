@@ -1,5 +1,7 @@
-fixing-up-UMG96RM_09092013.mib.patch
-fixing-up-UMG508.mib.patch
-fixing-up-UMG511.mib.patch
-fixing-up-UMG604.mib.patch
-fixing-up-UMG605.mib.patch
+UMG96-reformating-and-whitespace-cleanup.patch
+UMG508-reformating-and-whitespace-cleanup.patch
+UMG509-reformating-and-whitespace-cleanup.patch
+UMG511-reformating-and-whitespace-cleanup.patch
+UMG512-reformating-and-whitespace-cleanup.patch
+UMG604-reformating-and-whitespace-cleanup.patch
+UMG605-reformating-and-whitespace-cleanup.patch

@@ -1,0 +1,1343 @@
+From: Carsten Schoenert <c.schoenert@t-online.de>
+Date: Sun, 6 Sep 2015 14:44:51 +0200
+Subject: UMG509, reformating and whitespace cleanup
+
+---
+ UMG509.mib | 1111 ++++++++++++++++++++++++++++++------------------------------
+ 1 file changed, 547 insertions(+), 564 deletions(-)
+
+diff --git a/UMG509.mib b/UMG509.mib
+index 637f901..9c731de 100644
+--- a/UMG509.mib
++++ b/UMG509.mib
+@@ -1,26 +1,21 @@
+-
+-
+-	JANITZA-MIB DEFINITIONS ::= BEGIN
+-		IMPORTS
+-                  sysUpTime, DisplayString        
+-				FROM RFC1213-MIB
+-			OBJECT-TYPE
+-				FROM RFC-1212
+-			mib-2
+-		        	FROM SNMPv2-SMI
+-			enterprises, TimeTicks
+-				FROM RFC1155-SMI;
+-
+-
+-
+-
+-system   	OBJECT IDENTIFIER ::= { mib-2 1 }
+-snmp         OBJECT IDENTIFIER ::= { mib-2 11 }
++JANITZA-MIB DEFINITIONS ::= BEGIN
++    IMPORTS
++        sysUpTime, DisplayString
++            FROM RFC1213-MIB
++        OBJECT-TYPE
++            FROM RFC-1212
++        mib-2
++            FROM SNMPv2-SMI
++        enterprises, TimeTicks
++            FROM RFC1155-SMI;
++
++system OBJECT IDENTIFIER ::= { mib-2 1 }
++snmp   OBJECT IDENTIFIER ::= { mib-2 11 }
+ 
+ sysDescr OBJECT-TYPE
+-	SYNTAX OCTET STRING
+-    ACCESS  read-only
+-    STATUS      current
++    SYNTAX OCTET STRING
++    ACCESS read-only
++    STATUS current
+     DESCRIPTION
+             "A textual description of the entity.  This value should
+             include the full name and version identification of
+@@ -29,9 +24,9 @@ sysDescr OBJECT-TYPE
+     ::= { system 1 }
+ 
+ sysObjectID OBJECT-TYPE
+-    SYNTAX      OBJECT IDENTIFIER
+-    ACCESS  read-only
+-    STATUS      current
++    SYNTAX OBJECT IDENTIFIER
++    ACCESS read-only
++    STATUS current
+     DESCRIPTION
+             "The vendor's authoritative identification of the
+             network management subsystem contained in the entity.
+@@ -57,8 +52,8 @@ sysObjectID OBJECT-TYPE
+ 
+ sysName OBJECT-TYPE
+     SYNTAX OCTET STRING
+-    ACCESS  read-write
+-    STATUS      current
++    ACCESS read-write
++    STATUS current
+     DESCRIPTION
+             "An administratively-assigned name for this managed
+             node.  By convention, this is the node's fully-qualified
+@@ -67,9 +62,9 @@ sysName OBJECT-TYPE
+     ::= { system 5 }
+ 
+ sysLocation OBJECT-TYPE
+-	SYNTAX OCTET STRING
+-    ACCESS  read-write
+-    STATUS      current
++    SYNTAX OCTET STRING
++    ACCESS read-write
++    STATUS current
+     DESCRIPTION
+             "The physical location of this node (e.g., 'telephone
+             closet, 3rd floor').  If the location is unknown, the
+@@ -105,726 +100,714 @@ sysServices OBJECT-TYPE
+             may also be counted."
+     ::= { system 7 }
+ 
++janitza OBJECT IDENTIFIER ::= { enterprises 34278}
+ 
++rmsPhase OBJECT IDENTIFIER ::= { janitza 1 }
+ 
+-	janitza OBJECT IDENTIFIER ::= { enterprises 34278}
+-
+-	rmsPhase OBJECT IDENTIFIER ::= { janitza 1 }
+-
+-	uLN1 OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++uLN1 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Voltage Phase L1 in 100mV"
+-		::= { rmsPhase 1 }
++            "Voltage Phase L1 in 100mV"
++    ::= { rmsPhase 1 }
+ 
+-	uLN2 OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++uLN2 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Voltage Phase L2 in 100mV"
+-		::= { rmsPhase 2 }
++            "Voltage Phase L2 in 100mV"
++    ::= { rmsPhase 2 }
+ 
+-	uLN3 OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++uLN3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Voltage Phase L3 in 100mV"
+-		::= { rmsPhase 3 }
++            "Voltage Phase L3 in 100mV"
++    ::= { rmsPhase 3 }
+ 
+-	uLN4 OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++uLN4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Voltage Pahse L4 in 100mV"
+-		::= { rmsPhase 4 }
++            "Voltage Pahse L4 in 100mV"
++    ::= { rmsPhase 4 }
+ 
+-	uL1L2 OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++uL1L2 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Voltage Phase L1-L2 in 100mV"
+-		::= { rmsPhase 5 }
++            "Voltage Phase L1-L2 in 100mV"
++    ::= { rmsPhase 5 }
+ 
+-	uL2L3 OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++uL2L3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Voltage Phase L2-L3 in 100mV"
+-		::= {  rmsPhase 6 }
++            "Voltage Phase L2-L3 in 100mV"
++    ::= {  rmsPhase 6 }
+ 
+-	uL3L1 OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++uL3L1 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Voltage Phase L3-L1 in 100mV"
+-		::= { rmsPhase 7 }
++            "Voltage Phase L3-L1 in 100mV"
++    ::= { rmsPhase 7 }
+ 
+-	iL1	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++iL1 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Current Phase L1  in 1mA"
+-		::= { rmsPhase 8 }
++            "Current Phase L1 in 1mA"
++    ::= { rmsPhase 8 }
+ 
+-	iL2	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++iL2 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Current Phase L2  in 1mA"
+-		::= { rmsPhase 9 }
++            "Current Phase L2 in 1mA"
++    ::= { rmsPhase 9 }
+ 
+-	iL3	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++iL3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Current Phase L3  in 1mA"
+-		::= { rmsPhase 10 }
++            "Current Phase L3 in 1mA"
++    ::= { rmsPhase 10 }
+ 
+-	iL4	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++iL4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Current Phase L4  in 1mA"
+-		::= { rmsPhase 11 }
++            "Current Phase L4 in 1mA"
++    ::= { rmsPhase 11 }
+ 
+-	pL1	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++pL1 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Real Power L1  in Watt"
+-		::= { rmsPhase 12 }
++            "Real Power L1 in Watt"
++    ::= { rmsPhase 12 }
+ 
+-	pL2	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++pL2 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Real Power L2  in Watt"
+-		::= { rmsPhase 13 }
++            "Real Power L2 in Watt"
++    ::= { rmsPhase 13 }
+ 
+-	pL3	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++pL3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Real Power L3  in Watt"
+-		::= { rmsPhase 14 }
++            "Real Power L3 in Watt"
++    ::= { rmsPhase 14 }
+ 
+-	pL4	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++pL4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Real Power L4  in Watt"
+-		::= { rmsPhase 15 }
++            "Real Power L4 in Watt"
++    ::= { rmsPhase 15 }
+ 
+-	qL1	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++qL1 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Reaktiv Power L1  in VAr"
+-		::= { rmsPhase 16 }
++            "Reaktiv Power L1 in VAr"
++    ::= { rmsPhase 16 }
+ 
+-	qL2	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++qL2 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Reaktiv Power L2  in VAr"
+-		::= { rmsPhase 17 }
++            "Reaktiv Power L2 in VAr"
++    ::= { rmsPhase 17 }
+ 
+-	qL3	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++qL3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Reaktiv Power L3  in VAr"
+-		::= { rmsPhase 18 }
++            "Reaktiv Power L3 in VAr"
++    ::= { rmsPhase 18 }
+ 
+-	qL4	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++qL4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Reaktiv Power L4  in VAr"
+-		::= { rmsPhase 19 }
++            "Reaktiv Power L4 in VAr"
++    ::= { rmsPhase 19 }
+ 
+-	sL1	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++sL1 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Power L1  in VA"
+-		::= { rmsPhase 20 }
++            "Power L1 in VA"
++    ::= { rmsPhase 20 }
+ 
+-	sL2	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++sL2 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Power L2  in VA"
+-		::= { rmsPhase 21 }
++            "Power L2 in VA"
++    ::= { rmsPhase 21 }
+ 
+-	sL3	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++sL3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Power L3  in VA"
+-		::= { rmsPhase 22 }
++            "Power L3 in VA"
++    ::= { rmsPhase 22 }
+ 
+-	sL4	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++sL4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Power L4  in VA"
+-		::= { rmsPhase 23 }
++            "Power L4 in VA"
++    ::= { rmsPhase 23 }
+ 
+-	cosPL1	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++cosPL1 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Cos(Phi) L1 * 0.001"
+-		::= { rmsPhase 24 }
++            "Cos(Phi) L1 * 0.001"
++    ::= { rmsPhase 24 }
+ 
+-	cosPL2	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++cosPL2 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Cos(Phi) L2 * 0.001"
+-		::= { rmsPhase 25 }
++            "Cos(Phi) L2 * 0.001"
++    ::= { rmsPhase 25 }
+ 
+-	cosPL3	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++cosPL3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Cos(Phi) L3 * 0.001"
+-		::= { rmsPhase 26 }
++            "Cos(Phi) L3 * 0.001"
++    ::= { rmsPhase 26 }
+ 
+-	cosPL4	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++cosPL4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Cos(Phi) L4 * 0.001"
+-		::= { rmsPhase 27 }
++            "Cos(Phi) L4 * 0.001"
++    ::= { rmsPhase 27 }
+ 
++rmsSumme3 OBJECT IDENTIFIER ::= { janitza 2 }
+ 
+-	rmsSumme3 OBJECT IDENTIFIER ::= { janitza 2 }
+-
+-	p3     OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++p3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Real Power Summe L1..L3  in Watt"
+-		::= { rmsSumme3 1}
++            "Real Power Summe L1..L3 in Watt"
++    ::= { rmsSumme3 1 }
+ 
+-	q3	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++q3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Reaktiv Power Summe L1..L3  in Watt"
+-		::= { rmsSumme3 2}
++            "Reaktiv Power Summe L1..L3 in Watt"
++    ::= { rmsSumme3 2 }
+ 
+-	s3	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++s3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Power Summe L1..L3  in Watt"
+-		::= { rmsSumme3 3}
++            "Power Summe L1..L3 in Watt"
++    ::= { rmsSumme3 3 }
+ 
+-	cosP3	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++cosP3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"COS(Phi) Summe L1..L3  *0.001"
+-		::= { rmsSumme3 4}
+-
++            "COS(Phi) Summe L1..L3  *0.001"
++    ::= { rmsSumme3 4 }
+ 
+-	rmsSumme4 OBJECT IDENTIFIER ::= { janitza 3 }
++rmsSumme4 OBJECT IDENTIFIER ::= { janitza 3 }
+ 
+-	p4    OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++p4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Real Power Summe L1..L4  in Watt"
+-		::= { rmsSumme4 1}
++            "Real Power Summe L1..L4 in Watt"
++    ::= { rmsSumme4 1 }
+ 
+-	q4	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++q4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Reaktiv Power Summe L1..L4  in Watt"
+-		::= { rmsSumme4 2}
++            "Reaktiv Power Summe L1..L4 in Watt"
++    ::= { rmsSumme4 2 }
+ 
+-	s4	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++s4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Power Summe L1..L4  in Watt"
+-		::= { rmsSumme4 3}
++            "Power Summe L1..L4 in Watt"
++    ::= { rmsSumme4 3 }
+ 
+-	cosP4	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++cosP4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"COS(Phi) Summe L1..L4  *0.001"
+-		::= { rmsSumme4 4}
++            "COS(Phi) Summe L1..L4  *0.001"
++    ::= { rmsSumme4 4 }
+ 
++energiePhase OBJECT IDENTIFIER ::= { janitza 4 }
+ 
+-
+-	energiePhase OBJECT IDENTIFIER ::= { janitza 4 }
+-
+-	whL1     OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++whL1 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Active Energie  Phase L1 in 0.1 KWh"
+-		::= { energiePhase  1}
++            "Active Energie  Phase L1 in 0.1 KWh"
++    ::= { energiePhase 1 }
+ 
+-	whL2     OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++whL2 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Active Energie  Phase L2 in 0.1 KWh"
+-		::= { energiePhase  2}
++            "Active Energie  Phase L2 in 0.1 KWh"
++    ::= { energiePhase 2 }
+ 
+-	whL3     OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++whL3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Active Energie  Phase L3 in 0.1 KWh"
+-		::= { energiePhase  3}
++            "Active Energie  Phase L3 in 0.1 KWh"
++    ::= { energiePhase 3 }
+ 
+-	whL4     OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++whL4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Active Energie  Phase L4 in 0.1 KWh"
+-		::= { energiePhase  4}
+-
++            "Active Energie  Phase L4 in 0.1 KWh"
++    ::= { energiePhase 4 }
+ 
+-	qhL1     OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++qhL1 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Reaktive Energie  Phase L1 in 0.1 KVArh"
+-		::= { energiePhase  5}
++            "Reaktive Energie  Phase L1 in 0.1 KVArh"
++    ::= { energiePhase 5 }
+ 
+-	qhL2     OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++qhL2 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Reaktive Energie  Phase L2 in 0.1 KVArh"
+-		::= { energiePhase  6}
++            "Reaktive Energie  Phase L2 in 0.1 KVArh"
++    ::= { energiePhase 6 }
+ 
+-	qhL3     OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++qhL3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Reaktive Energie  Phase L3 in 0.1 KVArh"
+-		::= { energiePhase  7}
++            "Reaktive Energie  Phase L3 in 0.1 KVArh"
++    ::= { energiePhase 7 }
+ 
+-	qhL4     OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++qhL4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Reaktive Energie  Phase L4 in 0.1 KVArh"
+-		::= { energiePhase  8}
++            "Reaktive Energie  Phase L4 in 0.1 KVArh"
++    ::= { energiePhase 8 }
+ 
++energieSumme3 OBJECT IDENTIFIER ::= { janitza 5 }
+ 
+-	energieSumme3 OBJECT IDENTIFIER ::= { janitza 5 }
+-
+-	wh3    OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++wh3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Active Energie  Summe L1..L3 in 0.1 KWh"
+-		::= { energieSumme3 1}
++            "Active Energie  Summe L1..L3 in 0.1 KWh"
++    ::= { energieSumme3 1 }
+ 
+-	qh3    OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++qh3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Reaktive Energie  Summe L1..L3 in 0.1 KWh"
+-		::= { energieSumme3  2}
++            "Reaktive Energie  Summe L1..L3 in 0.1 KWh"
++    ::= { energieSumme3  2 }
+ 
+-	energieSumme4 OBJECT IDENTIFIER ::= { janitza 6 }
++energieSumme4 OBJECT IDENTIFIER ::= { janitza 6 }
+ 
+-	wh4    OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++wh4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Active Energie  Summe L1..L4 in 0.1 KWh"
+-		::= { energieSumme4  1}
++            "Active Energie  Summe L1..L4 in 0.1 KWh"
++    ::= { energieSumme4 1 }
+ 
+-	qh4    OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++qh4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Reaktive Energie  Summe L1..L4 in 0.1 KWh"
+-		::= { energieSumme4  2}
++            "Reaktive Energie  Summe L1..L4 in 0.1 KWh"
++    ::= { energieSumme4  2 }
+ 
+-	thd OBJECT IDENTIFIER ::= { janitza 7 }
++thd OBJECT IDENTIFIER ::= { janitza 7 }
+ 
+-	thdULN1	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++thdULN1 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Total Harmonic Distortion Voltage Phase L1 * 0.1%"
+-		::= { thd 1 }
++            "Total Harmonic Distortion Voltage Phase L1 * 0.1%"
++    ::= { thd 1 }
+ 
+-	thdULN2	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++thdULN2 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Total Harmonic Distortion Voltage Phase L2 * 0.1%"
+-		::= { thd 2 }
++            "Total Harmonic Distortion Voltage Phase L2 * 0.1%"
++    ::= { thd 2 }
+ 
+-	thdULN3	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++thdULN3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Total Harmonic Distortion Voltage Phase L3 * 0.1%"
+-		::= { thd 3 }
++            "Total Harmonic Distortion Voltage Phase L3 * 0.1%"
++    ::= { thd 3 }
+ 
+-	thdULN4	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++thdULN4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Total Harmonic Distortion Voltage Phase L4 * 0.1%"
+-		::= { thd 4 }
++            "Total Harmonic Distortion Voltage Phase L4 * 0.1%"
++    ::= { thd 4 }
+ 
+-	thdIL1	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++thdIL1 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Total Harmonic Distortion Current Phase L1 * 0.1%"
+-		::= { thd 5 }
++            "Total Harmonic Distortion Current Phase L1 * 0.1%"
++    ::= { thd 5 }
+ 
+-	thdIL2	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++thdIL2 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Total Harmonic Distortion Current Phase L2 * 0.1%"
+-		::= { thd 6 }
++            "Total Harmonic Distortion Current Phase L2 * 0.1%"
++    ::= { thd 6 }
+ 
+-	thdIL3	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++thdIL3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Total Harmonic Distortion Current Phase L3 * 0.1%"
+-		::= { thd 7 }
++            "Total Harmonic Distortion Current Phase L3 * 0.1%"
++    ::= { thd 7 }
+ 
+-	thdIL4	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++thdIL4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Total Harmonic Distortion Current Phase L4 * 0.1%"
+-		::= { thd 8 }
++            "Total Harmonic Distortion Current Phase L4 * 0.1%"
++    ::= { thd 8 }
+ 
+-	misc OBJECT IDENTIFIER ::= { janitza 8 }
++misc OBJECT IDENTIFIER ::= { janitza 8 }
+ 
+-	frequenz	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++frequenz OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Frequenz* 0.01 Hz"
+-		::= { misc 1 }
++            "Frequenz* 0.01 Hz"
++    ::= { misc 1 }
+ 
+-	user OBJECT IDENTIFIER ::= { janitza 9 }
++user OBJECT IDENTIFIER ::= { janitza 9 }
+ 
+-	jasicVAR1	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR1 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[0]"
+-		::= { user 1 }
++            "Jasic User Variable to user for Jasic :_snmp_uservar[0]"
++    ::= { user 1 }
+ 
+-	jasicVAR2	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR2 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[1]"
+-		::= { user 2 }
++            "Jasic User Variable to user for Jasic :_snmp_uservar[1]"
++    ::= { user 2 }
+ 
+-	jasicVAR3	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR3 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[2]"
+-		::= { user 3 }
++            "Jasic User Variable to user for Jasic :_snmp_uservar[2]"
++    ::= { user 3 }
+ 
+-	jasicVAR4	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR4 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[3]"
+-		::= { user 4 }
++            "Jasic User Variable to user for Jasic :_snmp_uservar[3]"
++    ::= { user 4 }
+ 
+-	jasicVAR5	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR5 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[4]"
+-		::= { user 5 }
++            "Jasic User Variable to user for Jasic :_snmp_uservar[4]"
++    ::= { user 5 }
+ 
+-	jasicVAR6	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR6 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[5]"
+-		::= { user 6 }
++            "Jasic User Variable to user for Jasic :_snmp_uservar[5]"
++    ::= { user 6 }
+ 
+-	jasicVAR7	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR7 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[6]"
+-		::= { user 7 }
++            "Jasic User Variable to user for Jasic :_snmp_uservar[6]"
++    ::= { user 7 }
+ 
+-	jasicVAR8	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR8 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[7]"
+-		::= { user 8 }
++            "Jasic User Variable to user for Jasic :_snmp_uservar[7]"
++    ::= { user 8 }
+ 
+-	jasicVAR9	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR9 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[8]"
+-		::= { user 9 }
++            "Jasic User Variable to user for Jasic :_snmp_uservar[8]"
++    ::= { user 9 }
+ 
+-	jasicVAR10	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR10 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[9]"
+-		::= { user 10 }
++            "Jasic User Variable to user for Jasic :_snmp_uservar[9]"
++    ::= { user 10 }
+ 
+-	jasicVAR11	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR11 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[10]"
+-		::= { user 11 }
++            "Jasic User Variable to user for Jasic :_snmp_uservar[10]"
++    ::= { user 11 }
+ 
+-	jasicVAR12	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR12 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[11]"
+-		::= { user 12 }
++            "Jasic User Variable to user for Jasic :_snmp_uservar[11]"
++    ::= { user 12 }
+ 
+-	jasicVAR13	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR13 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[12]"
+-		::= { user 13 }
++            "Jasic User Variable to user for Jasic :_snmp_uservar[12]"
++    ::= { user 13 }
+ 
+-	jasicVAR14	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR14 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[13]"
+-		::= { user 14 }
++            "Jasic User Variable to user for Jasic :_snmp_uservar[13]"
++    ::= { user 14 }
+ 
+-	jasicVAR15	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR15 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[14]"
+-		::= { user 15 }
++            "Jasic User Variable to user for Jasic :_snmp_uservar[14]"
++    ::= { user 15 }
+ 
+-	jasicVAR16	OBJECT-TYPE
+-		SYNTAX INTEGER
+-		ACCESS read-write
+-		STATUS mandatory
++jasicVAR16 OBJECT-TYPE
++    SYNTAX INTEGER
++    ACCESS read-write
++    STATUS mandatory
+     DESCRIPTION
+-		"Jasic User Variable  to user for Jasic :_snmp_uservar[15]"
+-		::= { user 16 }
+-
+-
+-
+-         coldStart TRAP-TYPE
+-              ENTERPRISE  snmp
+-              DESCRIPTION
+-                          "A coldStart trap signifies that the sending
+-                          protocol entity is reinitializing itself such
+-                          that the agent's configuration or the rotocol
+-                          entity implementation may be altered."
+-              ::= 0
+-
+-          warmStart TRAP-TYPE
+-              ENTERPRISE  snmp
+-              DESCRIPTION
+-                          "A warmStart trap signifies that the sending
+-                          protocol entity is reinitializing itself such
+-                          that neither the agent configuration nor the
+-                          protocol entity implementation is altered."
+-              ::= 1
++            "Jasic User Variable to user for Jasic :_snmp_uservar[15]"
++    ::= { user 16 }
+ 
++coldStart TRAP-TYPE
++     ENTERPRISE snmp
++     DESCRIPTION
++            "A coldStart trap signifies that the sending
++            protocol entity is reinitializing itself such
++            that the agent's configuration or the rotocol
++            entity implementation may be altered."
++     ::= 0
+ 
++warmStart TRAP-TYPE
++    ENTERPRISE snmp
++    DESCRIPTION
++            "A warmStart trap signifies that the sending
++            protocol entity is reinitializing itself such
++            that neither the agent configuration nor the
++            protocol entity implementation is altered."
++     ::= 1
+ 
+-	userTrap1 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap1 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 6"
+-		::=  6
++            "Jasic Trap  : use type=6 , subtype = 6"
++    ::= 6
+ 
+-	userTrap2 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap2 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 7"
+-		::=  7
++            "Jasic Trap  : use type=6 , subtype = 7"
++    ::= 7
+ 
+-	userTrap3 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap3 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 8"
+-		::=  8
++            "Jasic Trap  : use type=6 , subtype = 8"
++    ::= 8
+ 
+-	userTrap4 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap4 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 9"
+-		::=  9
++            "Jasic Trap  : use type=6 , subtype = 9"
++    ::= 9
+ 
+-	userTrap5 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap5 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 10"
+-		::=  10
++            "Jasic Trap  : use type=6 , subtype = 10"
++    ::= 10
+ 
+-	userTrap6 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap6 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 11"
+-		::=  11
++            "Jasic Trap  : use type=6 , subtype = 11"
++    ::= 11
+ 
+-	userTrap7 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap7 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 12"
+-		::=  12
++            "Jasic Trap  : use type=6 , subtype = 12"
++    ::= 12
+ 
+-	userTrap8 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap8 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 13"
+-		::=  13
++            "Jasic Trap  : use type=6 , subtype = 13"
++    ::= 13
+ 
+-	userTrap9 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap9 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 14"
+-		::=  14
++            "Jasic Trap  : use type=6 , subtype = 14"
++    ::= 14
+ 
+-	userTrap10 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap10 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 15"
+-		::=  15
++            "Jasic Trap  : use type=6 , subtype = 15"
++    ::= 15
+ 
+-	userTrap11 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap11 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 16"
+-		::=  16
++            "Jasic Trap  : use type=6 , subtype = 16"
++    ::= 16
+ 
+-	userTrap12 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap12 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 17"
+-		::=  17
++            "Jasic Trap  : use type=6 , subtype = 17"
++    ::= 17
+ 
+-	userTrap13 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap13 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 18"
+-		::=  18
++            "Jasic Trap  : use type=6 , subtype = 18"
++    ::= 18
+ 
+-	userTrap14 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap14 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 19"
+-		::=  19
++            "Jasic Trap  : use type=6 , subtype = 19"
++    ::= 19
+ 
+-	userTrap15 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap15 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 20"
+-		::=  20
++            "Jasic Trap  : use type=6 , subtype = 20"
++    ::= 20
+ 
+-	userTrap16 TRAP-TYPE
+-		ENTERPRISE janitza 
++userTrap16 TRAP-TYPE
++    ENTERPRISE janitza
+     DESCRIPTION
+-		"Jasic Trap  : use type=6 , subtype = 21"
+-		::=  21
++            "Jasic Trap  : use type=6 , subtype = 21"
++    ::= 21
+ 
+-	END		
+\ No newline at end of file
++END
