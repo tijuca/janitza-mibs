@@ -1,3 +1,13 @@
+janitza-mibs (20150906-1) unstable; urgency=medium
+
+  * [552efc3] debian/README.source: adding additional readme
+  * [3690211] Imported Upstream version 20150906
+  * [babda11] debian/control: adding new devices UMG509 and UMG512
+  * [88171ce] debian/gbp.conf: adjust to current git-buildpackage behaviour
+  * [599728e] rebuild patch-queue from patch queue branch
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Sun, 06 Sep 2015 14:57:22 +0200
+
 janitza-mibs (05122014-1) unstable; urgency=medium
 
   * [d674d7c] Imported Upstream version 05122014
